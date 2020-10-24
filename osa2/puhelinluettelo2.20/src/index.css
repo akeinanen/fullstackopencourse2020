@@ -1,0 +1,57 @@
+body {
+    font-size: 18px;
+}
+
+@media screen and (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    body {
+        font-size: 14px;
+    }
+}
+
+h2 {
+    color: green;
+    font-style: italic;
+}
+
+li {
+    color: grey;
+    padding-top: 3px;
+    font-size: 0.8em;
+    list-style: disc;
+}
+
+.notification {
+    background-color: grey;
+    border: 3px solid green;
+    border-radius: 10px;
+    padding: 2px 0px;
+    width: 20em;
+    margin-bottom: 20px;
+    box-shadow: 2px 2px 5px 5px grey;
+}
+
+.notification p {
+    text-align: center;
+    color: green;
+}
+
+.error {
+    background-color: grey;
+    border: 3px solid red;
+    border-radius: 10px;
+    padding: 2px 0px;
+    width: 20em;
+    margin-bottom: 20px;
+}
+
+.error p {
+    text-align: center;
+    color: red;
+}
+
