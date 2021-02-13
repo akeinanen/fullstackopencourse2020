@@ -1,0 +1,29 @@
+{
+  "anecdotes": [
+    {
+      "content": "testi1",
+      "votes": 49,
+      "id": 1
+    },
+    {
+      "content": "testi2",
+      "id": 2,
+      "votes": 50
+    },
+    {
+      "content": "testi3",
+      "id": 3,
+      "votes": 49
+    },
+    {
+      "content": "testi4",
+      "id": 4,
+      "votes": 48
+    },
+    {
+      "content": "testi5",
+      "votes": 0,
+      "id": 5
+    }
+  ]
+}

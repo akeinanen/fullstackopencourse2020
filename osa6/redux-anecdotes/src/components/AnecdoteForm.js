@@ -1,0 +1,28 @@
+import React from 'react'
+import { connect } from 'react-redux'
+import { createAnecdote } from './../reducers/anecdoteReducer'
+
+const AnecdoteForm = (props) => {
+
+    const addAnecdote = async (event) => {
+        event.preventDefault()
+        const content = event.target.newAnecdote.value
+        event.target.newAnecdote.value = ''
+        props.createAnecdote(content)
+    }
+
+    return (
+        <>
+        <h2>Create new</h2>
+        <form onSubmit={addAnecdote}>
+            <div><input name="newAnecdote" /></div>
+            <button>create</button>
+        </form>
+        </>
+    )
+}
+
+export default connect(
+    null,
+    { createAnecdote }
+)(AnecdoteForm)
