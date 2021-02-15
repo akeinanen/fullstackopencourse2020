@@ -12,7 +12,7 @@ const User = require('../models/user')
     blog = await Blog.findById(request.params.id)
     response.json(blog.toJSON())
   })
- 
+
   blogsRouter.post('/', async (request, response) => {
     const body = request.body
     const decodedToken = jwt.verify(request.token, process.env.SECRET)
@@ -20,14 +20,13 @@ const User = require('../models/user')
       return response.status(401).json({ error: 'token missing or invalid' })
     }
     const user = await User.findById(decodedToken.id)
-    console.log(await User.find({}))
 
     const blog = new Blog({
       title: body.title,
       author: body.author,
       url: body.url,
       likes: body.likes || 0,
-      user: user._id
+      user: user._id,
     })
     
     const savedBlog = await blog.save()
@@ -35,6 +34,15 @@ const User = require('../models/user')
     await user.save()
       
     response.status(201).json(savedBlog.toJSON())
+  })
+
+  blogsRouter.post('/:id/comments', async (request, response) => {
+    const blog = await Blog.findById(request.params.id)
+ 
+    blog.comments.push(request.body.comment)
+    savedBlog = await blog.save()
+
+    response.status(201).json(savedBlog)
   })
 
   blogsRouter.delete('/:id', async (request, response) => {

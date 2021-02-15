@@ -81,16 +81,17 @@ const App = () => {
         await blogFormRef.current.toggleVisibility()
         const returnedBlog = await blogService.create(createBlog)
         dispatch({
+            type: 'NEW_BLOG',
+            data: returnedBlog
+        })
+
+        dispatch({
             type: 'NOTIFICATION',
             data: { message: `${createBlog.title} by ${createBlog.author} added!`, type: 'correct' }
         })
         setTimeout(() => {
             dispatch({ type: 'CLEAR' })
         }, 5000)
-        dispatch({
-            type: 'NEW_BLOG',
-            data: returnedBlog
-        })
     }
 
     const updateBlogs = async () => {
@@ -111,9 +112,9 @@ const App = () => {
             </Togglable>
 
             <div id="blogs">
-                <ul>
+                <ul className="blogList">
                     {blogs.map(blog =>
-                        <li className="blogList" key={blog.id}><Link to={`/blogs/${blog.id}`}>{blog.title}</Link></li>
+                        <li key={blog.id}><Link to={`/blogs/${blog.id}`}>{blog.title}</Link></li>
                     )}
                 </ul>
             </div>
@@ -184,7 +185,6 @@ const App = () => {
                     <Blogs />
                 </Route>
             </Switch>
-
         </Router>
     )
 }

@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
+import React from 'react'
 import blogService from '../services/blogs'
-import { Link } from 'react-router-dom'
+import CommentForm from '../components/CommentForm'
+
+
 
 const Blog = ({ blog, updateBlogs }) => {
 
@@ -11,12 +13,12 @@ const Blog = ({ blog, updateBlogs }) => {
         updateBlogs()
     }
 
-    const deleteBlog = async () => {
+    /* const deleteBlog = async () => {
         if(window.confirm(`Remove blog ${blog.title} by ${blog.author}`)) {
             await blogService.remove(blog.id)
             updateBlogs()
         }
-    }
+    } */
 
     return (
         <>
@@ -24,6 +26,14 @@ const Blog = ({ blog, updateBlogs }) => {
             <a href={blog.url}>{blog.url}</a>
             <div>{blog.likes} likes<button onClick={() => addLike()}>like</button></div>
             <div>added by {blog.author}</div>
+            <h2>Comments</h2>
+            <CommentForm id={blog.id} />
+            <ul>
+                {blog.comments.map(c =>
+                    // Better way to do this?
+                    <li key={Math.random() * 10000}>{c}</li>
+                )}
+            </ul>
         </>
     )}
 

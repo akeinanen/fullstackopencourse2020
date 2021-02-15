@@ -8,6 +8,12 @@ const blogReducer = (state = [], action) => {
     case 'ADD_LIKE':
         state[state.findIndex(b => b.id === action.data)].likes = 3
         return state
+    case 'ADD_COMMENT': {
+        const index = state.findIndex(b => b.id === action.data.id)
+        const newArray = [...state]
+        newArray[index].comments.push(action.data.comment)
+        return newArray
+    }
     default:
         return state
     }

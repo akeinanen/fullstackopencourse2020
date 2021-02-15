@@ -37,6 +37,10 @@
   }
 }
 
+body {
+  background-color: #fffdfd;
+}
+
 /* Navbar */
 
 nav ul {
@@ -68,6 +72,24 @@ nav ul li {
 /* Blog list */
 
 .blogList {
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.blogList li {
+  flex: 0 40%;
+  margin-right: 5%;
+  margin-left: 5%;
   list-style: none;
+  box-sizing: border-box;
   border: 1px solid black;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  background-color: #CDC1D9;
+}
+
+.blogList li:hover {
+  background-color: #7FCEF0;
 }

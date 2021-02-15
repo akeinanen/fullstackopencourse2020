@@ -17,8 +17,15 @@ const Users = ({ blogs }) => {
             <h2>Added blogs</h2>
             <ul>
                 {singleUser.blogs.map(blog =>
-                    <li key={blog}>{blogs.find(b => b.id === blog).title}</li>
-                )}
+                {if(!blogs.find(b => b.id === blog)) {
+                    return null
+                } else {
+                    return (
+                        <>
+                            <li key={blog}>{blogs.find(b => b.id === blog).title}</li>
+                        </>
+                    )
+                }})}
             </ul>
         </>
         :

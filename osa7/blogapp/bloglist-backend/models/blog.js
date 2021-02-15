@@ -14,6 +14,9 @@ const mongoose = require('mongoose')
     user: {
       type: mongoose.Schema.Types.ObjectId,
       ref: 'User'
+    },
+    comments: {
+      type: Array,
     }
   })
   
